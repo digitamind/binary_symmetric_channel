@@ -30,12 +30,12 @@ This study aims to achieve the following:
 ### Section One:
 Transmitting 10,000 binary sequence over the channel.
 * Source message (s): 625 random 16 bits binary numbers were generated between 0 and 9999. To form the source message of 10,000 bits.
-* Transmitted message (t): using repetition code, each bit was repeated 3 times to obtain the transmitted message.
-* Sparse noise (n) was generated with an error rate of f=0.1
+* Transmitted message (t): using repetition code, each bit was repeated three times for R3, five times for R5, in that order to obtain the transmitted message.
+* Sparse noise (n) was generated with an error probability of f=0.1
 * The received string (r) = transmitted t + noise n, was decoded using the majority vote algorithm, and the received message `s-prime` was obtained.
 * We finally computed the differences (number of bits flipped) between the source message (s) and the received message (s-prime)
-* The result confirmed that less that 3% of the bits got flipped, that is resulted in error.
-* You can check out the python implementation here: [bin_sys_channel.py](https://github.com/4DigitalMind/binary_symmetric_channel/blob/master/bin_sys_channel.py)
+* The result confirmed that only less that 3% of the bits transmitted got flipped.
+* Kindly check out the python implementation code here: [bin_sys_channel.py](https://github.com/4DigitalMind/binary_symmetric_channel/blob/master/bin_sys_channel.py)
 
 ### Section Two:
 Transmitting bitmap image over the channel.
@@ -43,16 +43,16 @@ Transmitting bitmap image over the channel.
 * Transmitted message (t): also obtained using repetition code. We started with R3, then R5,R7,R9 up to R27 and the output of the channel got more and more reliable in that order.
 * The received sequence(r) = transmitted t + noise n, was decoded using the majority vote algorithm, and the received image `s-prime` was obtained.
 * We computed and compared the likelihood P(s|r). And the differences in the transmitted bitmap image and the received image could also be visually noticed.
-* The implementation code in python can be accessed here: [bsc_bitmap_image.py](https://github.com/4DigitalMind/binary_symmetric_channel/blob/master/bsc_bitmap_image.py)
+* The implementation code in python could also be accessed here: [bsc_bitmap_image.py](https://github.com/4DigitalMind/binary_symmetric_channel/blob/master/bsc_bitmap_image.py)
 
 ## Result and Discussion
-* Section One: It was observed that the transmission of 10,000 binary sequence over the channel without repetition code resulted in 1038 bits flipped, which obeyed the error probability of f=0.1 (10%), and a repetition code of R3 reduced the error to 269 bits - equivalent to 2.69%. As the order of the repetition code increases, the error probability tends to zero.
-* Section Two: Figure F-R0 shows the source image while F-R3, F-R5, F-R7, etc. shows the result of transmitting a binary image over a binary symmetric channel using the repetition code R3, R5, R7, etc. The effect of the bits flipped is easily visualized from the quality of the image. As the repetition code increases, the system produce more reliable output.
+* Section One: It was observed that the transmission of 10,000 binary sequence over the channel without repetition code resulted in 1038 bits flipped, which was in line with the error probability of f=0.1 (10%), and a repetition code of R3 reduced the error to 269 bits - equivalent to 2.69%, approximately 3%. As the order of the repetition code increases, the error probability tends to zero.
+* Section Two: Figure F-R0 shows the source image while F-R3, F-R5, F-R7, etc. represents the result of transmitting the binary image over the simple communication system using the repetition code R3, R5, R7, etc. The effect of the bits flipped could easily be visualized through the image texture. As the repetition code increases, the system produced a more reliable output.
 <p align="center">F-R0<img src="bird.gif" width="200" height="200" > F-R3<img src="bird.gif_decoded_R3_f0.1.jpg" width="200" height="200" > F-R5<img src="bird.gif_decoded_R5_f0.1.jpg" width="200" height="200" ><p> 
 <p align="center">F-R7<img src="bird.gif_decoded_R7_f0.1.jpg" width="200" height="200" > F-R9<img src="bird.gif_decoded_R9_f0.1.jpg" width="200" height="200" > F-R17<img src="bird.gif_decoded_R17_f0.1.jpg" width="200" height="200" ></p>
 
 # Conclusion
-<p align="justify">The repetition code R3, R5, R7, etc. has therefore reduced the probability of error, as desired. Yet we have lost something: our rate of information transfer has fallen by a factor of the repetition, rate of R3 has fallen by three, R5 by five, and R7 by seven, in that order. So if we use a repetition code to communicate data over a telephone line, it will reduce the error frequency, but it will also reduce our communication rate. We will have to pay three or more times as much for each phone call. Similarly, we would need three or more of the original noisy gigabyte disk drives in order to create a one-gigabyte disk drive with pb <= 0:03.</p>
+<p align="justify">The repetition codes R3, R5, or R7, etc. had therefore reduced the probability of error as desired. Yet we lost something: our rate of information transfer had fallen by a factor of the repetition, transfer rate of R3 fell by three, R5 by five, and R7 by seven, in that order. So if we use a repetition code to communicate data over a telephone line, it will reduce the error frequency, but it will also reduce our communication rate. We will have to pay three or more times as much for each phone call. Similarly, we would need three or more of the original noisy gigabyte disk drives in order to create a one-gigabyte disk drive with error probability <= 0:03.</p>
 <p align="justify">However, we can communicate with tiny probability and at substantial rate over a BSC using other error correcting codes such as Hamming code. This is only a simulation program developed to study the performance of repetition codes as error correcting code over binary symmetric channels.</p>
 
 # Reference
